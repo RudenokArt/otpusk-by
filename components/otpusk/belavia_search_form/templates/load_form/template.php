@@ -11,12 +11,16 @@
     color: white;
     padding: 5px;
   }
+  .belavia-search-form-item-sm,
   .belavia-search-form-item {
     display: flex;
     justify-content: space-between;
     padding: 5px;
     width: 300px;
     position: relative;
+  }
+  .belavia-search-form-item-sm{
+    width: 200px;
   }
   .belavia-search-form button {
     height: 25px;
@@ -92,7 +96,7 @@
     <input type="text" name="ReturnDate" class="form-control">
   </div>
 
-  <div class="belavia-search-form-item">
+  <div class="belavia-search-form-item-sm">
     <span><?php echo GetMessage('adults');?>:</span>
     <div>
       <button name="adults_passanger_delete">
@@ -105,7 +109,7 @@
     </div>
   </div>
 
-  <div class="belavia-search-form-item">
+  <div class="belavia-search-form-item-sm">
     <span><?php echo GetMessage('children');?>:</span>
     <div>
       <button name="childrens_passanger_delete">
@@ -118,7 +122,7 @@
     </div>
   </div>
 
-  <div class="belavia-search-form-item">
+  <div class="belavia-search-form-item-sm">
     <span><?php echo GetMessage('infants');?>:</span>
     <div>
       <button name="infants_passanger_delete">
@@ -131,7 +135,7 @@
     </div>
   </div>
 
-  <div class="belavia-search-form-item">
+  <div class="belavia-search-form-item-sm">
     <div class="belavia-search-form-submit-button">
       <button name="belavia-search-form-submit-button">
         <i class="fa fa-search" aria-hidden="true"></i>
