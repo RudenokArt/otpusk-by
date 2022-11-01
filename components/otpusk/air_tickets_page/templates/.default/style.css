@@ -1,0 +1,46 @@
+.nav.nav-tabs {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px;
+  padding-bottom: 0;
+}
+.nav-link {
+  background: rgba(0, 0, 0, 0.1);
+}
+.nav-link.active {
+  color: #FC480C;
+  background: white;
+}
+.air_tickets_send_button {
+  text-transform: none !important;
+  letter-spacing: 1px !important;
+}
+.air_tickets-advantages_icon {
+  height: 50px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.payment-services {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.payment-services-item-wrapper {
+  height: 75px;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.payment-services-item {
+  height: 65px;
+  width: 90px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 5px;
+}
