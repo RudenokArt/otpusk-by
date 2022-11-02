@@ -1,6 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
 <div class="row h3 pt-10">
-  Заявка на подбор и покупку авиабилетов, автобусных и железнодорожных билетов.
+  <div class="col-12">
+    Заявка на подбор и покупку авиабилетов и железнодорожных билетов.
+  </div>
 </div>
 <?php if ($arResult['send_request']): ?>
   <div class="alert alert-success h6 text-center" role="alert">
@@ -116,8 +118,11 @@
 
   <script>
     $( function() {
-      $( "#ticket_date_from, #ticket_date_to" ).datepicker();
+      $( "#ticket_date_from, #ticket_date_to" ).datepicker({
+        'dateFormat': 'dd.mm.yy',
+      });
     } );
   </script>
 
-
+<pre><?php print_r($_POST); ?></pre>
+<pre><?php print_r($arResult); ?></pre>

@@ -3,24 +3,27 @@
 /**
  * 
  */
-class TestClass extends CBitrixComponent{
+class AirTicketsPage  extends B24_class {
 
-  public function onPrepareComponentParams ($arParams) {
-    $arr = $arParams;
-    $arr['count'] = count($arParams);
-    return $arr;   
-  }
-  public function executeComponent () {
-    if($this->startResultCache()) {
-      $this->arResult = $this->currentTab();
+  function __construct () {
+    $this->arResult = $this->currentTab();
       $this->arResult['advantages'] = $this->advantages();
       $this->arResult['payments'] = $this->payments();
       if ($_POST['ticket_send_request']) {
-        $this->arResult['send_request'] = $this->sendRequest();
+        $this->arResult['send_request'] = $this->restApiRequest('tasks.task.add', ['fields' => [
+          'TITLE' => $this->arResult['ticket_type'],
+          'DESCRIPTION' => '<br>Окуда: '.$_POST['from'].
+          '<br>Куда: '.$_POST['to'].
+          '<br>'.$this->arResult['date_from'].': '.$_POST['date_from'].
+          '<br>'.$this->arResult['date_to'].': '.$_POST['date_to'].
+          '<br>Кол-во пассажиров: '.$_POST['passanger_qty'].
+          '<br>Тел.: '.$_POST['phone'].
+          '<br>ФИО: '.$_POST['fio'].
+          '<br>Email: '.$_POST['email'],
+          'ACCOMPLICES' => [28786, 29160, 29643],
+          'RESPONSIBLE_ID' => 25279,
+        ]]);
       }
-      $this->includeComponentTemplate();
-    }
-    return $this->arResult;
   }
 
   function payments () {
@@ -55,19 +58,18 @@ class TestClass extends CBitrixComponent{
     return $arr;
   }
 
-  function sendRequest () {
-    return true;
-  }
 
   function currentTab () {
     if ($_GET['tab'] == 'train_tickets') {
       return [
+        'ticket_type' => 'Заявка на подбор и покупку ЖД билетов',
         'current_tab' => 'train_tickets',
         'date_from' => 'Дата отъезда',
         'date_to' => 'Дата приезда',
       ];
     } else {
      return [
+      'ticket_type' => 'Заявка на подбор и покупку авиабилетов',
       'current_tab' => 'air_tickets',
       'date_from' => 'Дата вылета',
       'date_to' => 'Дата прилета',
@@ -77,5 +79,7 @@ class TestClass extends CBitrixComponent{
 
 }
 
+$arResult = (new AirTicketsPage())->arResult;
 
+$this->includeComponentTemplate();
 ?>
