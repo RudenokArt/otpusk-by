@@ -1,17 +1,30 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
-<div class="row h3 pt-10">
-  <div class="col-12">
-    Заявка на подбор и покупку авиабилетов и железнодорожных билетов.
+
   </div>
 </div>
-<?php if ($arResult['send_request']): ?>
-  <div class="alert alert-success h6 text-center" role="alert">
-    Ваша заявка принята! Мы свяжемся с вами.
-  </div>
-<?php endif ?>
-<div class="row pt-10">
+<div class="container">
+  <div class="row pt-10">
+    <div class="col-lg-10">
+      <div class="h3">
+        Заявка на подбор и покупку авиабилетов и железнодорожных билетов.
+      </div>
+      <div>
+       РУП «Центркурорт» предлагает сервисный и индивидуальный подход к подбору <?php echo $arResult['prew_type']; ?>. Приобретая билеты в нашей компании, Вы получаете:
+     </div>      
+   </div>
+   <div class="col-lg-2 mt-20 border">
+     пн-пт: 9:00-18:00 <br>
+     сб, вс: выходной <br>
+     тел.: +375 (29) 191-39-66 <br>
+   </div>
+ </div>
+ <div class="row">
   <div class="col-12">
-    РУП «Центркурорт» предлагает сервисный и индивидуальный подход к подбору авиабилетов для Вас, среди множества авиакомпаний. Приобретая билеты в нашей компании, Вы получаете:
+    <?php if ($arResult['send_request']): ?>
+      <div class="alert alert-success h6 text-center" role="alert">
+        Ваша заявка принята! Мы свяжемся с вами.
+      </div>
+    <?php endif ?>
   </div>
 </div>
 <div class="row pt-10">
@@ -100,20 +113,21 @@
   <?php foreach ($arResult['payments'] as $key => $value): ?>
     <?php if ($value['PREVIEW_TEXT']): ?>
       <a href="<?php echo $value['PREVIEW_TEXT']; ?>">
-      <div class="payment-services-item-wrapper">        
-        <div style="background-image: url(<?php echo CFile::GetFileArray($value['DETAIL_PICTURE'])['SRC'];?>);"
-          class="payment-services-item"></div>
-        </div>
-      </a>
-    <?php else: ?>
-      <div class="payment-services-item-wrapper">        
-        <div style="background-image: url(<?php echo CFile::GetFileArray($value['DETAIL_PICTURE'])['SRC'];?>);"
-          class="payment-services-item"></div>
-        </div>
-    <?php endif ?>
-    
-    <?php endforeach ?>
+        <div class="payment-services-item-wrapper">        
+          <div style="background-image: url(<?php echo CFile::GetFileArray($value['DETAIL_PICTURE'])['SRC'];?>);"
+            class="payment-services-item"></div>
+          </div>
+        </a>
+      <?php else: ?>
+        <div class="payment-services-item-wrapper">        
+          <div style="background-image: url(<?php echo CFile::GetFileArray($value['DETAIL_PICTURE'])['SRC'];?>);"
+            class="payment-services-item"></div>
+          </div>
+        <?php endif ?>
+      <?php endforeach ?>
+    </div>
   </div>
+
 
 
   <script>

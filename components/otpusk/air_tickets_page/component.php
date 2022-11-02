@@ -62,17 +62,19 @@ class AirTicketsPage  extends B24_class {
   function currentTab () {
     if ($_GET['tab'] == 'train_tickets') {
       return [
+        'prew_type' => 'железнодорожных билетов различных направлений',
         'ticket_type' => 'Заявка на подбор и покупку ЖД билетов',
         'current_tab' => 'train_tickets',
-        'date_from' => 'Дата отъезда',
-        'date_to' => 'Дата приезда',
+        'date_from' => 'Дата туда',
+        'date_to' => 'Дата оттуда',
       ];
     } else {
      return [
+      'prew_type' => 'авиабилетов для Вас, среди множества авиакомпаний',
       'ticket_type' => 'Заявка на подбор и покупку авиабилетов',
       'current_tab' => 'air_tickets',
-      'date_from' => 'Дата вылета',
-      'date_to' => 'Дата прилета',
+      'date_from' => 'Дата туда',
+        'date_to' => 'Дата оттуда',
     ];
   }
 }
