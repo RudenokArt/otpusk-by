@@ -65,16 +65,12 @@ class AirTicketsPage  extends B24_class {
         'prew_type' => 'железнодорожных билетов различных направлений',
         'ticket_type' => 'Заявка на подбор и покупку ЖД билетов',
         'current_tab' => 'train_tickets',
-        'date_from' => 'Дата туда',
-        'date_to' => 'Дата оттуда',
       ];
     } else {
      return [
       'prew_type' => 'авиабилетов для Вас, среди множества авиакомпаний',
       'ticket_type' => 'Заявка на подбор и покупку авиабилетов',
       'current_tab' => 'air_tickets',
-      'date_from' => 'Дата туда',
-        'date_to' => 'Дата оттуда',
     ];
   }
 }

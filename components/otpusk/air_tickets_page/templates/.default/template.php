@@ -70,12 +70,12 @@
       <input type="text" class="form-control" name="to" required>
     </div>
     <div class="col-sm-6 col-md-3">
-      <?php echo $arResult['date_from'] ?>:
+      Дата туда:
       <input type="text" class="form-control" name="date_from" id="ticket_date_from" required>
     </div>
     <div class="col-sm-6 col-md-3">
-      <?php echo $arResult['date_to'] ?>:
-      <input type="text" class="form-control" name="date_to" id="ticket_date_to" required>
+      Дата обратно:
+      <input type="text" class="form-control" name="date_to" id="ticket_date_to">
     </div>
     <div class="col-sm-6 col-md-3">
       Количество пассажиров:
