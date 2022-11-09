@@ -62,13 +62,11 @@ class AirTicketsPage  extends B24_class {
   function currentTab () {
     if ($_GET['tab'] == 'train_tickets') {
       return [
-        'prew_type' => 'железнодорожных билетов различных направлений',
         'ticket_type' => 'Заявка на подбор и покупку ЖД билетов',
         'current_tab' => 'train_tickets',
       ];
     } else {
      return [
-      'prew_type' => 'авиабилетов для Вас, среди множества авиакомпаний',
       'ticket_type' => 'Заявка на подбор и покупку авиабилетов',
       'current_tab' => 'air_tickets',
     ];
