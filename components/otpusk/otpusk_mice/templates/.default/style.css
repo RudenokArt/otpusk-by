@@ -1,0 +1,47 @@
+.mice_main_title{
+  margin:0;
+}
+
+.mice_tab-image {
+  width: 100%;
+  height: auto;
+}
+
+input[type="checkbox"].checkbox-visible,
+input[type="radio"].radio-visible {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+#event_abroad_title {
+  display: none;
+}
+
+.mice-event-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+
+.mice_locations-list {
+  padding-top:20px;
+}
+
+.mice_locations-item {
+  cursor: pointer !important;
+  padding-top: 10px;
+}
+
+.mice_locations-item_image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height:250px;
+}
+
+.mice_locations-item_text {
+  height: 50px;
+}
