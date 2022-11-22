@@ -14,7 +14,6 @@ $mice_pre_calc_options = [
 ];
 ?>
 
-
 <?php if ($_POST['mice_event_order']): ?>
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -29,9 +28,10 @@ $mice_pre_calc_options = [
       <?php endif ?>
     </div>
   </div>
-<?php endif ?>      
+<?php endif ?>
 
-<div class="row pb-10">
+<form action="" method="post">
+  <div class="row pb-10">
   <div class="col-lg-12 col-md-12 col-sm-12">
     <span class="mice-event-title">* Название и тип мероприятия:</span>          
     <input <?php if ($_POST['event_type']): ?>
@@ -171,6 +171,10 @@ $cpt->SetCodeCrypt($captchaPass);
     src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($cpt->GetCodeCrypt());?>">
   </div>
 </div>
+</form>
+     
+
+
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-12">
     Нажимая на кнопку «Отправить заявку, 
@@ -180,5 +184,4 @@ $cpt->SetCodeCrypt($captchaPass);
     и даете согласие на обработку персональных данных. 
   </div>
 </div>
-<pre><?php print_r($arResult->mice_event_order); ?></pre>
 

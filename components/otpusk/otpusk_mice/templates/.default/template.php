@@ -44,9 +44,6 @@
     </div>
     <div class="col-lg-8 col-md-12 col-sm-12">
       <p><?php echo $arResult->tabContent['DETAIL_TEXT']; ?></p>
-      <?php if($_GET['tab'] == 'calc'): ?>
-        <?php include_once 'includes/mice_pre_calc.php' ?>
-      <?php endif ?>
     </div>
   <?php else: ?>
     <div class="col-lg-12 col-md-12 col-sm-12">
