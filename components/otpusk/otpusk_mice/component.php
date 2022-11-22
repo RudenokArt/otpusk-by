@@ -79,7 +79,7 @@ class Otpusk_mice extends B24_class {
     $deal = $this->restApiRequest('crm.deal.add', [
       'fields' => [
         'TITLE' => 'MICE - заявка на проведение мероприятия',
-        'ASSIGNED_BY_ID' => 27427,
+        'ASSIGNED_BY_ID' => 29643,
         'CATEGORY_ID' => 13,
         'STAGE_ID' => 'C13:NEW',
         'COMMENTS' => 
@@ -97,7 +97,7 @@ class Otpusk_mice extends B24_class {
       ],
     ]);
     $this->restApiRequest('im.message.add.json', [
-      'DIALOG_ID' => 27427,
+      'DIALOG_ID' => 4735,
       'MESSAGE' => 'MICE - заявка на проведение мероприятия 
       <br>https://bitrix.vetliva.by/crm/deal/details/'.json_decode($deal, true)['result'].'/',
     ]);
