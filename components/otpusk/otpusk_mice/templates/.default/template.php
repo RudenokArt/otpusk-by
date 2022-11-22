@@ -2,6 +2,22 @@
 </div>
 </div>
 
+<?php if ($_POST['mice_event_order']): ?>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <?php if ($_POST['captcha_pass'] != $_POST['captcha_word']): ?>        
+        <div class="alert alert-danger text-center h6" role="alert">
+          Неверный код с картинки!
+        </div>        
+      <?php else: ?>
+        <div class="alert alert-success text-center h6" role="alert">
+          Ваша заявка принята. После обработки данных формы, наш специалист свяжется с вами.
+        </div>
+      <?php endif ?>
+    </div>
+  </div>
+<?php endif ?>
+
 <div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12">
     <aside class="sidebar">
