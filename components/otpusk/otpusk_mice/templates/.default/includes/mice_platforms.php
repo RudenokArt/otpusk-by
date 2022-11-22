@@ -41,7 +41,7 @@ foreach ($arResult->platform_list as $key => $value) {
 </div>
 <div class="row mice_locations-list">
   <?php foreach ($arResult->eco_mice_list as $key => $value): ?>
-    <a href="/sanatorii/<?php echo $value['CODE'];?>/"
+    <a href="/otdykh-v-belarusi/natsionalnye-parki/<?php echo $value['CODE'];?>/"
       class="col-lg-4 col-md-4 col-sm-6 col-12 mice_locations-item border">
       <div class="mice_locations-item_image" style="background-image: url(<?php echo CFile::GetFileArray($value['PREVIEW_PICTURE'])['SRC'];?>);"></div>
       <div class="h5 text-center mice_locations-item_text">
