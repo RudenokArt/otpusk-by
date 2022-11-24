@@ -1,0 +1,65 @@
+.excursions_booking-item_slider {
+  height:200px;
+  width: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.excursions_booking-item_slider-image {
+  height: 200px !important;
+  width: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.excursions_booking-detail_slider {
+  height:400px;
+  width: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.excursions_booking-detail_slider-image {
+  height: 400px !important;
+  width: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.excursions_booking-detail_slider .slick-next,
+.excursions_booking-detail_slider .slick-prev,
+.excursions_booking-item_slider .slick-next,
+.excursions_booking-item_slider .slick-prev {
+  position:  absolute;
+  top: 50%;
+}
+.excursions_booking-detail_slider .slick-prev,
+.excursions_booking-item_slider .slick-prev {
+  left: 0;
+}
+.excursions_booking-detail_slider .slick-next,
+.excursions_booking-item_slider .slick-next {
+  right: 0;
+}
+.excursions_booking-detail_slider .slick-next::before,
+.excursions_booking-detail_slider .slick-prev::before,
+.excursions_booking-item_slider .slick-next::before,
+.excursions_booking-item_slider .slick-prev::before {
+  color: orange;
+  background: white;
+  opacity: 0.8 !important;
+}
+
+@media screen and (max-width: 500px){
+  .excursions_booking-detail_slider {
+    height:200px;
+    width: 250px;
+  }
+
+  .excursions_booking-detail_slider-image {
+    height: 200px !important;
+    width: 250px;
+  }
+}
