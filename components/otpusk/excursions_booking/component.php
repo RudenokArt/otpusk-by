@@ -23,6 +23,7 @@ class ExcursionsBooking extends B24_class {
         'PROPERTY_COUNTRY',
         'PROPERTY_DURATION_TIME',
         'PROPERTY_DEPARTURE_EXC_TEXT',
+        'PROPERTY_VETLIVA_ID',
       ];
     } elseif ($_GET['request']) {
       $this->arFilter = [
@@ -51,6 +52,84 @@ class ExcursionsBooking extends B24_class {
       ];
     }
     $this->excursions_list = $this->excursionsList();
+  }
+
+  function dealAssignedBy ($deal_data) {
+    $contact = json_decode($this->checkContact($deal_data), true);
+    $contact = $contact['result'][0]['ID'];
+    if (!$contact) {
+      $contact = json_decode($this->addNewContact($deal_data), true);
+      $contact = $contact['result'];
+    }
+    $str = $this->restApiRequest('user.get.json', ['FILTER' => [
+      'ACTIVE' => true,
+      'UF_DEPARTMENT' => 42,
+      'UF_DEPARTMENT' => 41,
+      'CONTACT_ID' => $contact,
+    ]]);
+    $arr = json_decode($str, true);
+    $list = [];
+    foreach ($arr['result'] as $key => $value) {
+      if ($value['ID']) {
+        array_push($list, $value['ID']);
+      }
+    }
+    $deal = $this->addNewDeal($list[array_rand($list)], $deal_data);
+    foreach ($list as $key => $value) {
+      $this->sendMessage($value, $deal['result']);
+    }
+    return ['list' => $list, 'assigned' => $list[array_rand($list)], 'deal' => $deal['result']];
+  }
+
+  function addNewContact ($deal_data) {
+    $contact = $this->restApiRequest('crm.contact.add.json', ['fields' => [
+      'NAME' => $deal_data['fio'],
+      'PHONE' => [
+        ['VALUE' => $deal_data['phone'],
+        'VALUE_TYPE' => 'WORK',]
+      ],
+      'EMAIL' => [
+        ['VALUE' => $deal_data['email'],
+        'VALUE_TYPE' => 'WORK',]
+      ],
+    ]]);
+    return $contact;
+  }
+
+  function checkContact ($deal_data) {
+    $contact = $this->restApiRequest ('crm.contact.list.json',['filter' => [
+      // 'EMAIL' => $deal_data['email'],
+      'EMAIL' => 'test@mail.ru',
+    ], 'select' => [
+      'ID', 'NAME', 'PHONE', 'EMAIL',
+    ],
+  ]);
+    return $contact;
+  }
+
+  function addNewDeal ($assigned, $deal_data) {
+    $deal = $this->restApiRequest ('crm.deal.add.json', ['fields' => [
+      'TITLE' => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by',
+      'CATEGORY_ID' => 0,
+      'TYPE_ID' => 'SERVICES',
+      'STAGE_ID' => '2',
+      'OPENED' => 'Y',
+      'ASSIGNED_BY_ID' => $assigned,
+      'COMMENTS' => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by <br>
+      Экскурсия: '.$this->excursions_list['list'][0]['NAME'].'
+      ФИО: '.$deal_data['fio'].'
+      тел: '.$deal_data['phone'].'
+      email: '.$deal_data['email'],
+    ]]);
+    // $deal = $this->restApiRequest ('crm.deal.get.json', ['id' => 4280]);
+    return json_decode($deal, true);
+  }
+
+  function sendMessage ($dialog, $deal) {
+    $this->restApiRequest('im.message.add.json', [
+      'DIALOG_ID' => $dialog,
+      'MESSAGE'  => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by: https://bitrix.vetliva.by/crm/deal/details/'.$deal.'/',
+    ]);
   }
 
   function currentPage () {

@@ -1,12 +1,12 @@
 <?php $value = $arResult->excursions_list['list'][0]; ?>
-<pre><?php print_r($_POST); ?></pre>
 
 <br>
 <?php if ($_POST['request']): ?>
+  <?php $arResult->dealAssignedBy($_POST); ?>
   <div class="alert alert-success text-center h5" role="alert">
     Ваша заявка приянята. Наш менеджер свяжется с вами.
   </div>
-  <?php echo '<meta http-equiv="refresh" content="5; url=?page_N=1" />'; ?>
+  <?php //echo '<meta http-equiv="refresh" content="5; url=?page_N=1" />'; ?>
 <?php else: ?>
   <form action="" method="post" class="row">
     <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 border">
@@ -43,6 +43,4 @@
     </div>
   </form>
 <?php endif ?>
-
-
 <br>

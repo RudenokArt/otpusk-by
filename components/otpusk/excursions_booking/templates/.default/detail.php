@@ -28,9 +28,18 @@
       <div class="р5">
         Заявка на экскурсию: 
       </div>
-      <a href="?request=<?php echo $value['ID'];?>" class="btn btn-primary">
+      <div>
+        <a href="?request=<?php echo $value['ID'];?>" class="btn btn-primary">
         Отправить заявку
       </a>
+      </div>
+      <div>
+        <br>
+        <a href="/otdykh-v-belarusi/tury-i-ekskursii/searchresult.php?tpm_params[id][]=<?php echo $value['PROPERTY_VETLIVA_ID_VALUE'];?>"
+          class="btn btn-primary">
+        Бронировать онлайн
+      </a>
+      </div>
     </div>
   </div>
   <div class="row">
