@@ -21,7 +21,7 @@
       (<?php foreach ($value['TOWN'] as $key1 => $value1): ?>
         <?php echo $value1['NAME'] ?>,
       <?php endforeach ?>) <br><br>
-      <a href="?detail=<?php echo $value['ID'];?>" class="btn btn-primary">
+      <a href="?detail=<?php echo $value['ID'];?>&tpm_params[id][]=<?php echo $value['PROPERTY_VETLIVA_ID_VALUE'];?>" class="btn btn-primary">
         Подробнее
       </a>
     </div>

@@ -35,6 +35,7 @@ class ExcursionsBooking extends B24_class {
         'ID',
         'IBLOCK_ID',
         'NAME',
+        'PROPERTY_VETLIVA_ID',
       ];
     } else {
       $this->arFilter = [
@@ -49,6 +50,7 @@ class ExcursionsBooking extends B24_class {
         'PROPERTY_COUNTRY',
         'PROPERTY_DURATION_TIME',
         'PROPERTY_DEPARTURE_EXC_TEXT',
+        'PROPERTY_VETLIVA_ID',
       ];
     }
     $this->excursions_list = $this->excursionsList();

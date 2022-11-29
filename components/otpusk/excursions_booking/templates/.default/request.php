@@ -30,7 +30,9 @@
       </div>
       <br>
       <div class="text-center">
-        <a href="?detail=<?php echo $_GET['request'];?>" title="Отмена" class="btn btn-primary">
+        <a title="Отмена"
+        href="?detail=<?php echo $_GET['request'];?>&tpm_params[id][]=<?php echo $value['PROPERTY_VETLIVA_ID_VALUE'];?>"
+        class="btn btn-primary">
           <i class="fa fa-times" aria-hidden="true"></i>
           Отмена
         </a>
