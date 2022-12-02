@@ -66,7 +66,7 @@ class ExcursionsBooking extends B24_class {
     $str = $this->restApiRequest('user.get.json', ['FILTER' => [
       'ACTIVE' => true,
       'UF_DEPARTMENT' => 42,
-      'UF_DEPARTMENT' => 41,
+      // 'UF_DEPARTMENT' => 41,
       'CONTACT_ID' => $contact,
     ]]);
     $arr = json_decode($str, true);
@@ -111,13 +111,13 @@ class ExcursionsBooking extends B24_class {
 
   function addNewDeal ($assigned, $deal_data) {
     $deal = $this->restApiRequest ('crm.deal.add.json', ['fields' => [
-      'TITLE' => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by',
+      'TITLE' => 'Заявка на экскурсию с сайта otpusk.by',
       'CATEGORY_ID' => 0,
       'TYPE_ID' => 'SERVICES',
       'STAGE_ID' => '2',
       'OPENED' => 'Y',
       'ASSIGNED_BY_ID' => $assigned,
-      'COMMENTS' => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by <br>
+      'COMMENTS' => 'Заявка на экскурсию с сайта otpusk.by <br>
       Экскурсия: '.$this->excursions_list['list'][0]['NAME'].'
       ФИО: '.$deal_data['fio'].'
       тел: '.$deal_data['phone'].'
@@ -130,7 +130,7 @@ class ExcursionsBooking extends B24_class {
   function sendMessage ($dialog, $deal) {
     $this->restApiRequest('im.message.add.json', [
       'DIALOG_ID' => $dialog,
-      'MESSAGE'  => 'ТЕСТ Заявка на экскурсию с сайта otpusk.by: https://bitrix.vetliva.by/crm/deal/details/'.$deal.'/',
+      'MESSAGE'  => 'Заявка на экскурсию с сайта otpusk.by: https://bitrix.vetliva.by/crm/deal/details/'.$deal.'/',
     ]);
   }
 
