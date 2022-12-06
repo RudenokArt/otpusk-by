@@ -78,6 +78,9 @@
 <?php if ($_GET['tab'] == 'portfolio'): ?>
   <?php include_once 'includes/mice_events.php' ?>
 <?php endif ?>
+<?php if ($_GET['tab'] == 'location'): ?>
+  <?php include_once 'includes/mice_location.php' ?>
+<?php endif ?>
 
 
 

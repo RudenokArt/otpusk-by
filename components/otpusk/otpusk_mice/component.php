@@ -12,63 +12,71 @@ class Otpusk_mice extends B24_class {
     }
   }
 
-  function miceEventsList () {
-    $arr = [];
-    $src = CIBlockElement::GetList (['SORT'=>'DESC', 'ID'=>'ASC'], [
+  function miceLocation ($section_id) {
+    $section_src = CIBlockSection::GetList([
+      'SORT' => 'DESC',
+      'ID' => 'ASC'
+    ], [
       'ACTIVE' => 'Y',
-      'IBLOCK_CODE' => 'mice_ck',
-      'SECTION_CODE' => 'mice_events',
+      'ID' => $section_id,
+    ], false, [
+      'ID', 'CODE', 'NAME', 'DESCRIPTION',
+    ]);
+    $section = $section_src->Fetch();
+
+    $src = CIBlockElement::GetList([
+      'SORT' => 'DESC',
+      'ID' => 'ASC'
+    ], [
+      'ACTIVE' => 'Y',
+      'SECTION_ID' => $section_id,
     ], false, false, [
       'ID',
-      'CODE',
+      'IBLOCK_ID',
       'NAME',
-      'PREVIEW_PICTURE',
       'PREVIEW_TEXT',
-      'PROPERTY_MICE',
+      'DETAIL_TEXT',
+      'IBLOCK_SECTION_ID',
     ]);
+    $arr = [];
+    while ($item = $src->Fetch()) {
+      array_push($arr, $item);
+    }
+    return ['section' => $section, 'list' => $arr,];
+  }
+
+  function miceLocProperty ($iblock, $item) {
+    $src = CIBlockElement::GetProperty($iblock, $item, [], ['CODE' => 'PHOTO']);
+    $arr = [];
     while ($item = $src->Fetch()) {
       array_push($arr, $item);
     }
     return $arr;
   }
 
-  function ecoMiceList () {
-    $arr = [];
-    $src = CIBlockElement::GetList (['SORT'=>'DESC', 'ID'=>'ASC'], [
+  function locationsList ($section_code) {
+    $section_src = CIBlockSection::GetList([
+      'SORT' => 'DESC',
+      'ID' => 'ASC'
+    ], [
       'ACTIVE' => 'Y',
-      'IBLOCK_ID' => 55,
-    ], false, false, [
-      'ID',
-      'CODE',
-      'NAME',
-      'PREVIEW_PICTURE',
-      'PREVIEW_TEXT',
-      'PROPERTY_MICE',
+      'CODE' => $section_code,
+    ], false, [
+      'ID', 'CODE', 'NAME', 'DESCRIPTION',
     ]);
-    while ($item = $src->Fetch()) {
-      array_push($arr, $item);
-    }
-    return $arr;
-  }
+    $section = $section_src->Fetch();
 
-  function platformList () {
-    $arr = [];
-    $src = CIBlockElement::GetList (['SORT'=>'DESC', 'ID'=>'ASC'], [
+    $section_list_src = CIBlockSection::GetList ([], [
+      'SECTION_ID' => $section['ID'],
       'ACTIVE' => 'Y',
-      'IBLOCK_CODE' => 'hotel',
-      'PROPERTY_MICE_VALUE'=>['MICE_CITY', 'MICE_MEDICAL']
-    ], false, false, [
-      'ID',
-      'CODE',
-      'NAME',
-      'PREVIEW_PICTURE',
-      'PREVIEW_TEXT',
-      'PROPERTY_MICE',
     ]);
-    while ($item = $src->Fetch()) {
-      array_push($arr, $item);
+
+    $list = [];
+    while ($item = $section_list_src->Fetch()) {
+      array_push($list, $item);
     }
-    return $arr;
+
+    return ['section' => $section, 'list' => $list];
   }
 
   function miceEventOrder () {
@@ -108,9 +116,6 @@ class Otpusk_mice extends B24_class {
     if ($_GET['tab']) {
       return $_GET['tab'];
     }
-    if ($_GET['page']) {
-      return $_GET['page'];
-    }
     return 'mice';
   }
 
@@ -122,7 +127,7 @@ class Otpusk_mice extends B24_class {
     ], [
       'ACTIVE' => 'Y',
       'IBLOCK_CODE' => 'mice_ck',
-      '!SECTION_CODE' => 'mice_events'
+      'SECTION_CODE' => '',
     ], false, false, [
       'ID',
       'CODE',

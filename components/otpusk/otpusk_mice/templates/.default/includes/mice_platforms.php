@@ -1,69 +1,43 @@
 <?php 
-$arResult->eco_mice_list = $arResult->ecoMiceList();
-$arResult->platform_list = $arResult->platformList();
-$arResult->city_mice_arr = [];
-$arResult->medical_mice_arr =[];
-foreach ($arResult->platform_list as $key => $value) {
-  if ($value['PROPERTY_MICE_VALUE'] == 'MICE_CITY') {
-    array_push($arResult->city_mice_arr, $value);
-  } elseif ($value['PROPERTY_MICE_VALUE'] == 'MICE_MEDICAL') {
-    array_push($arResult->medical_mice_arr, $value);
-  }
-}
+
+$arr_locations_mice_list = [
+  'sity-mice',
+  'eco-mice',
+  'medical-mice',
+];
+
+
 
 ?>
-<div class="row">
-  <div class="col h5 text-center">
-    Предлагаем рассмотреть возможные локации лучших объектов страны:
-  </div>
-</div>
-<div class="row">
-  <div class="col h5 text-center">
-    ОТЕЛИ (sity-mice)
-  </div>
-</div>
-<div class="row mice_locations-list">
-  <?php foreach ($arResult->city_mice_arr as $key => $value): ?>
-    <a href="/oteli/<?php echo $value['CODE'];?>/" 
-      class="col-lg-4 col-md-4 col-sm-6 col-12 mice_locations-item border">
-      <div class="mice_locations-item_image" style="background-image: url(<?php echo CFile::GetFileArray($value['PREVIEW_PICTURE'])['SRC'];?>);"></div>
-      <div class="h5 text-center mice_locations-item_text">
-        <?php echo $value['NAME']; ?>
+<?php foreach ($arr_locations_mice_list as $key => $value): ?>
+  <?php $locations_mice_list = $arResult->locationsList($value); ?>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+      <div class="h4">
+        <?php echo $locations_mice_list['section']['NAME']; ?>
       </div>
-    </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="h6">
+        <?php echo $locations_mice_list['section']['DESCRIPTION']; ?>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <?php foreach ($locations_mice_list['list'] as $key1 => $value1): ?>
+      <a href="?tab=location&id=<?php echo $value1['ID'] ?>" class="col-lg-4 col-md-6 col-sm-6">
+        <div style="background-image: url('<?php echo CFile::GetFileArray($value1['PICTURE'])['SRC']; ?>');"
+          class="col-lg-12 col-md-12 col-sm-12 locations_list-item-image"></div>
+          <div class="text-center h5">
+            <?php echo $value1['NAME'] ?>
+          </div>
+        </a>
+      <?php endforeach ?>
+    </div>
   <?php endforeach ?>
-</div>
 
-<div class="row">
-  <div class="col h5 text-center">
-    НАЦИОНАЛЬНЫЕ ПАРКИ БЕЛАРУСИ (eco-mice)
-  </div>
-</div>
-<div class="row mice_locations-list">
-  <?php foreach ($arResult->eco_mice_list as $key => $value): ?>
-    <a href="/otdykh-v-belarusi/natsionalnye-parki/<?php echo $value['CODE'];?>/"
-      class="col-lg-4 col-md-4 col-sm-6 col-12 mice_locations-item border">
-      <div class="mice_locations-item_image" style="background-image: url(<?php echo CFile::GetFileArray($value['PREVIEW_PICTURE'])['SRC'];?>);"></div>
-      <div class="h5 text-center mice_locations-item_text">
-        <?php echo $value['NAME']; ?>
-      </div>
-    </a>
-  <?php endforeach ?>
-</div>
 
-<div class="row">
-  <div class="col h5 text-center">
-    САНАТОРНО-КУРОРТНЫЕ УЧРЕЖДЕНИЯ (medical-mice)
-  </div>
-</div>
-<div class="row mice_locations-list">
-  <?php foreach ($arResult->medical_mice_arr as $key => $value): ?>
-    <a href="/sanatorii/<?php echo $value['CODE'];?>/"
-      class="col-lg-4 col-md-4 col-sm-6 col-12 mice_locations-item border">
-      <div class="mice_locations-item_image" style="background-image: url(<?php echo CFile::GetFileArray($value['PREVIEW_PICTURE'])['SRC'];?>);"></div>
-      <div class="h5 text-center mice_locations-item_text">
-        <?php echo $value['NAME']; ?>
-      </div>
-    </a>
-  <?php endforeach ?>
-</div>
+
+  <pre><?php print_r($arResult->locationsList('sity-mice')); ?></pre>
