@@ -12,6 +12,39 @@ class Otpusk_mice extends B24_class {
     }
   }
 
+  function miceEvents ($section_code) {
+    $section_src = CIBlockSection::GetList([
+      'SORT' => 'DESC',
+      'ID' => 'ASC'
+    ], [
+      'ACTIVE' => 'Y',
+      'CODE' => $section_code,
+    ], false, [
+      'ID', 'CODE', 'NAME', 'DESCRIPTION',
+    ]);
+    $section = $section_src->Fetch();
+
+    $src = CIBlockElement::GetList([
+      'SORT' => 'DESC',
+      'ID' => 'ASC'
+    ], [
+      'ACTIVE' => 'Y',
+      'SECTION_CODE' => $section_code,
+    ], false, false, [
+      'ID',
+      'IBLOCK_ID',
+      'NAME',
+      'PREVIEW_TEXT',
+      'DETAIL_TEXT',
+      'IBLOCK_SECTION_ID',
+    ]);
+    $arr = [];
+    while ($item = $src->Fetch()) {
+      array_push($arr, $item);
+    }
+    return ['section' => $section, 'list' => $arr,];
+  }
+
   function miceLocation ($section_id) {
     $section_src = CIBlockSection::GetList([
       'SORT' => 'DESC',

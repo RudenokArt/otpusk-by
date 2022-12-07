@@ -37,7 +37,3 @@ $arr_locations_mice_list = [
       <?php endforeach ?>
     </div>
   <?php endforeach ?>
-
-
-
-  <pre><?php print_r($arResult->locationsList('sity-mice')); ?></pre>

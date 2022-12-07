@@ -6,9 +6,10 @@
   </div>
   <?php foreach ($mice_location['list'] as $key => $value): ?>
     <div class="row pt-5">
-    <div class="col-lg-6 col-md-6 col-sm-6 mice-location-slider">
+    <div class="col-lg-4 col-md-6 col-sm-6 mice-location-slider">
       <?php foreach ($arResult->miceLocProperty($value['IBLOCK_ID'], $value['ID']) as $key1 => $value1): ?>
-        <img src="<?php echo CFile::GetFileArray($value1['VALUE'])['SRC'];?>" alt="">
+        <div style="background-image: url('<?php echo CFile::GetFileArray($value1['VALUE'])['SRC'];?>');"
+          class="mice-location-slider-item"></div>
       <?php endforeach ?>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">
