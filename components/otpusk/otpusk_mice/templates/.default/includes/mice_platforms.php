@@ -27,7 +27,7 @@ $arr_locations_mice_list = [
   </div>
   <div class="row">
     <?php foreach ($locations_mice_list['list'] as $key1 => $value1): ?>
-      <a href="?tab=location&id=<?php echo $value1['ID'] ?>" class="col-lg-4 col-md-6 col-sm-6">
+      <a href="?tab=location&id=<?php echo $value1['ID'] ?>" class="col-lg-6 col-md-6 col-sm-6">
         <div style="background-image: url('<?php echo CFile::GetFileArray($value1['PICTURE'])['SRC']; ?>');"
           class="col-lg-12 col-md-12 col-sm-12 locations_list-item-image"></div>
           <div class="text-center h5">
