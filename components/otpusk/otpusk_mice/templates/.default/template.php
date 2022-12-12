@@ -17,8 +17,7 @@
     </div>
   </div>
 <?php endif ?>
-
-<hr>
+<br>
  <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <ul class="nav nav-tabs">
@@ -35,8 +34,7 @@
       </ul>
     </div>
   </div>
-  <hr>
-
+<br>
 <div class="row">
  
 <div class="col-lg-12 col-md-6 col-sm-12 col-12">
