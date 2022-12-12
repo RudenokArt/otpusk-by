@@ -13,7 +13,7 @@
       array_push($event_mice_images_arr, CFile::GetFileArray($value1['VALUE'])['SRC']);
     }
     ?>
-    <div data-json=<?php echo json_encode($event_mice_images_arr) ?> class="col-lg-4 col-md-4 col-sm-6 pt-5 mice-events-list-item">
+    <div data-json=<?php echo json_encode($event_mice_images_arr) ?> class="col-lg-6 col-md-6 col-sm-6 pt-5 mice-events-list-item">
       <div style="background-image: url('<?php echo $event_mice_images_arr[0];?>')"
         class="mice-events-list-item-img"></div>
         <div class="h6 text-center">
