@@ -16,7 +16,7 @@
     <div data-json=<?php echo json_encode($event_mice_images_arr) ?> class="col-lg-6 col-md-6 col-sm-6 pt-5 mice-events-list-item">
       <div style="background-image: url('<?php echo $event_mice_images_arr[0];?>')"
         class="mice-events-list-item-img"></div>
-        <div class="h6 text-center">
+        <div class="h6 text-center" style="height: 100px;">
           <?php echo $value['NAME']; ?>
         </div>
       </div>
