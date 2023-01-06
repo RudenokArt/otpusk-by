@@ -15,7 +15,7 @@ $mice_pre_calc_options = [
 ?>
 
 
-<form action="" method="post">
+<form action="" method="post" class="google_reCaptcha_form">
   <div class="row pb-10">
   <div class="col-lg-12 col-md-12 col-sm-12">
     <span class="mice-event-title">* Название и тип мероприятия:</span>          
