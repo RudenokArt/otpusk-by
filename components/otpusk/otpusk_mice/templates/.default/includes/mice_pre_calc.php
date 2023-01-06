@@ -137,23 +137,30 @@ if(strlen($captchaPass) <= 0) {
 }
 $cpt->SetCodeCrypt($captchaPass);
 ?>
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-12 mice-event-title">
-    * Введите код с картинки
-    <input value="<?=htmlspecialchars($cpt->GetCodeCrypt());?>" 
-    class="captchaSid" name="captcha_code" type="hidden">
-  </div>
+<div class="row pt-5">
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+<div class="g-recaptcha" data-sitekey="6LdClU0jAAAAAEru4BGR1WMa0O3WT6cyBKj7NSjG"></div>
+<div id="google_reCaptcha_warning" style="color:red;"></div>
+<script>
+  $('.google_reCaptcha_form').submit(function(){
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) {
+      $('#google_reCaptcha_warning').html('Подтвердите что вы не робот!');
+      return false;
+    }
+  });
+</script>
+</div>
+
+
+
   <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-    <input type="hidden" name="captcha_pass" value="<?php echo $cpt->code;?>">
-    <input class="inptext form-control" name="captcha_word" type="text" required>
     <button name="mice_event_order" value="Y" class="btn btn-primary mt-10 mb-10">
       <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
       Отправить заявку
     </button>
-  </div>
-  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-    <img class="captchaImg" 
-    src="/bitrix/tools/captcha.php?captcha_code=<?=htmlspecialchars($cpt->GetCodeCrypt());?>">
   </div>
 </div>
 </form>
