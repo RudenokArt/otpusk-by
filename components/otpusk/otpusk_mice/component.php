@@ -7,7 +7,7 @@ class Otpusk_mice extends B24_class {
   function __construct() {
     $this->tabs = $this->miceTabs();
     $this->currentTab = $this->miceCurrentTab();
-    if ($_POST['mice_event_order'] and ($_POST['captcha_pass'] == $_POST['captcha_word'])) {
+    if ($_POST['mice_event_order']) {
       $this->mice_event_order = $this->miceEventOrder();
     }
   }
